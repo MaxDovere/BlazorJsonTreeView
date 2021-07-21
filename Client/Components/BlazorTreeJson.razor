@@ -1,0 +1,45 @@
+﻿<TreeJson Nodes="Items" ChildSelector="node => node.Childs" @bind-SelectedNode="selectedNode" @bind-ExpandedNodes="ExpandedNodes" HasChildNodes="node => node.Childs?.Any() == true" NodeDisabled="node => node.Disabled">
+    <TitleTemplate>@context.Text</TitleTemplate>
+</TreeJson>
+
+<p style="margin-top: 2rem">
+    Selected: @selectedNode?.Text<br />
+    Expanded: @string.Join(", ", ExpandedNodes.Select(i => i.Text))<br />
+</p>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+       
+        string JsonDS = "{ " +
+                        "\"firstName\": \"John\", " +
+                        "\"lastName\": \"Smith\", " +
+                        "\"isAlive\": true, " +
+                        "\"age\": 25, " +
+                        "\"company\": null, " +
+                        "\"height_cm\": 167.64, " +
+                        "\"address\": { " +
+                            "\"streetAddress\": \"21 2nd Street\", " +
+                            "\"city\": \"New York\", " +
+                            "\"state\": \"NY\", " +
+                            "\"postalCode\": \"10021 -3100\" " +
+                        "}, " +
+                        "\"phoneNumbers\": [ " +
+                            "{ " +
+                                "\"type\": \"home\", " +
+                                "\"number\": \"212 555-1234\" " +
+                            "}, " +
+                            "{ " +
+                                "\"type\": \"fax\", " +
+                                "\"number\": \"646 555-4567\" " +
+                            "} " +
+                        "] " +
+                    "}";
+
+        SetObjectAsJson(JsonDS);
+
+        ExpandedNodes.Add(Items.First());
+        //ExpandedNodes.Add(NewItems.Skip(1).Take(1).First().Childs.Skip(1).First());
+    }
+}

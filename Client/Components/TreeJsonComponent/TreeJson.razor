@@ -29,7 +29,7 @@
 
             @if (hasChilds && nodeExpanded)
             {
-                <TreeBlazor @key="node"
+                <TreeJson @key="node"
                             Nodes="ChildSelector(node)"
                             TitleTemplate="TitleTemplate"
                             ChildSelector="ChildSelector"
@@ -63,7 +63,7 @@
     [Parameter] public IList<TNode> ExpandedNodes { get; set; } = new List<TNode>();
     [Parameter] public EventCallback<IList<TNode>> ExpandedNodesChanged { get; set; }
 
-    [Parameter] public TreeBlazorStyle Style { get; set; } = TreeBlazorStyle.Bootstrap;
+    [Parameter] public TreeJsonStyle Style { get; set; } = TreeJsonStyle.Bootstrap;
 
     [Parameter] public bool Visible { get; set; } = true;
 

@@ -1,9 +1,9 @@
 ﻿
-namespace BlazorJsonTreeView.Client.Components.TreeBlazorComponent
+namespace BlazorJsonTreeView.Client.Components.TreeJsonComponent
 {
-    public class TreeBlazorStyle
+    public class TreeJsonStyle
     {
-        public static readonly TreeBlazorStyle Bootstrap = new TreeBlazorStyle
+        public static readonly TreeJsonStyle Bootstrap = new TreeJsonStyle
         {
             ExpandNodeIconClass = "far fa-plus-square uic-tree--cursor-pointer",
             CollapseNodeIconClass = "far fa-minus-square uic-tree--cursor-pointer",
