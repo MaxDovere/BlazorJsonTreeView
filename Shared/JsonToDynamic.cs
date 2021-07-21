@@ -50,7 +50,7 @@ namespace BlazorJsonTreeView.Shared
                             case "String":
                             case "JValue":
                                 //Console.WriteLine("{0} {1} {2}", item.Type, item.Name, item.Value);
-                                Item NewItem = new Item() { Text = item.Name, Disabled = false };
+                                Item NewItem = new Item() { Text = $"{item.Name} : {item.Value} <{item.Last.Type}>", Disabled = false };
                                 Children.Add(NewItem);
                                 break;
                             case "Array":
@@ -58,16 +58,15 @@ namespace BlazorJsonTreeView.Shared
                                 List<Item> InternChildren = new List<Item>();
                                 foreach (var itemArray in item.Value)
                                 {
-                                    string namelocal = itemArray.Name;
                                     List<Item> LocalChilds = new List<Item>();
                                     dynamic arrayValues = JsonConvert.DeserializeObject<JToken>(JsonConvert.SerializeObject(itemArray));
                                     foreach (var itemIn in arrayValues)
                                     {
                                         //Console.WriteLine("{0} {1} {2}", itemIn.Type, itemIn.Name, itemIn.Value);
-                                        Item NewItemArray = new Item() { Text = itemIn.Name, Disabled = false };
+                                        Item NewItemArray = new Item() { Text = $"{itemIn.Name} : {itemIn.Value} <{itemIn.Last.Type}>", Disabled = false };
                                         LocalChilds.Add(NewItemArray);
                                     }
-                                    Item NewItemlocal = new Item() { Text = namelocal, Disabled = false, Childs = LocalChilds.ToArray() };
+                                    Item NewItemlocal = new Item() { Text = $"{itemArray.Name} <{Type}>", Disabled = false, Childs = LocalChilds.ToArray() };
                                     InternChildren.Add(NewItemlocal);
                                 }
                                 Item NewItemroot = new Item() { Text = item.Name, Disabled = false };
@@ -76,16 +75,15 @@ namespace BlazorJsonTreeView.Shared
                                 break;
                             case "Object":
                             case "JObject":
-                                string nameO = item.Name;
                                 List<Item> InternOChildren = new List<Item>();
                                 dynamic arrayObject = JsonConvert.DeserializeObject<JToken>(JsonConvert.SerializeObject(item.Last));
                                 foreach (var itemObject in arrayObject)
                                 {
                                     //Console.WriteLine("{0} {1} {2}", itemObject.Type, itemObject.Name, itemObject.Value);
-                                    Item NewItemObject = new Item() { Text = itemObject.Name, Disabled = false };
+                                    Item NewItemObject = new Item() { Text = $"{itemObject.Name} : {itemObject.Value} <{itemObject.Last.Type}>", Disabled = false };
                                     InternOChildren.Add(NewItemObject);
                                 }
-                                Item NewItemO = new Item() { Text = nameO, Disabled = false, Childs = InternOChildren.ToArray() };
+                                Item NewItemO = new Item() { Text = $"{item.Name} <{Type}>", Disabled = false, Childs = InternOChildren.ToArray() };
                                 Children.Add(NewItemO);
                                 break;
                             default:
