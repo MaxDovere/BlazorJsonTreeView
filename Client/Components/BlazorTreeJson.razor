@@ -11,33 +11,92 @@
 
     protected override void OnInitialized()
     {
-       
-        string JsonDS = "{ " +
-                        "\"firstName\": \"John\", " +
-                        "\"lastName\": \"Smith\", " +
-                        "\"isAlive\": true, " +
-                        "\"age\": 25, " +
-                        "\"company\": null, " +
-                        "\"height_cm\": 167.64, " +
-                        "\"address\": { " +
-                            "\"streetAddress\": \"21 2nd Street\", " +
-                            "\"city\": \"New York\", " +
-                            "\"state\": \"NY\", " +
-                            "\"postalCode\": \"10021 -3100\" " +
-                        "}, " +
-                        "\"phoneNumbers\": [ " +
-                            "{ " +
-                                "\"type\": \"home\", " +
-                                "\"number\": \"212 555-1234\" " +
-                            "}, " +
-                            "{ " +
-                                "\"type\": \"fax\", " +
-                                "\"number\": \"646 555-4567\" " +
-                            "} " +
-                        "] " +
-                    "}";
 
-        SetObjectAsJson(JsonDS);
+        //string JsonDS = "{ " +
+        //                "\"firstName\": \"John\", " +
+        //                "\"lastName\": \"Smith\", " +
+        //                "\"isAlive\": true, " +
+        //                "\"age\": 25, " +
+        //                "\"company\": null, " +
+        //                "\"height_cm\": 167.64, " +
+        //                "\"address\": { " +
+        //                    "\"streetAddress\": \"21 2nd Street\", " +
+        //                    "\"city\": \"New York\", " +
+        //                    "\"state\": \"NY\", " +
+        //                    "\"postalCode\": \"10021 -3100\" " +
+        //                "}, " +
+        //                "\"phoneNumbers\": [ " +
+        //                    "{ " +
+        //                        "\"type\": \"home\", " +
+        //                        "\"number\": \"212 555-1234\" " +
+        //                    "}, " +
+        //                    "{ " +
+        //                        "\"type\": \"fax\", " +
+        //                        "\"number\": \"646 555-4567\" " +
+        //                    "} " +
+        //                "] " +
+        //            "}";
+        string json = "{" +
+                "\"@xmlns\":\"http://www.starstandards.org/webservices/2005/10/transport\"," +
+                "\"SalesLeadHeader\": {" +
+                    "\"@xmlns\":\"http://www.starstandard.org/STAR/5\"," +
+                    "\"CustomerProspect\": {" +
+                        "\"ProspectParty\": {" +
+                            "\"SpecifiedOrganization\": {" +
+                                "\"PrimaryContact\": {" +
+                                    "\"SpecifiedPerson\": {" +
+                                        "\"GivenName\":\"Stefano\"," +
+                                        "\"FamilyName\":\"Ruscito\"," +
+                                        "\"Title\":null," +
+                                        "\"ResidenceAddress\": {" +
+                                            "\"LineOne\":null," +
+                                            "\"LineTwo\":null," +
+                                            "\"CityName\":null," +
+                                            "\"CountryID\":null," +
+                                            "\"Postcode\":null," +
+                                            "\"CountyCountrySub-Division\":null" +
+                                        "}," +
+                                    "\"TelephoneCommunication\": {" +
+                                        "\"ChannelCode\":\"0042\"," +
+                                        "\"CompleteNumber\":\"3286871115\"" +
+                                    "}," +
+                                    "\"URICommunication\": {" +
+                                        "\"ChannelCode\":\"0014\"," +
+                                        "\"CompleteNumber\":\"ruscito.stefano@libero.it\"" +
+                                    "}" +
+                                "}" +
+                            "}" +
+                        "} ," +
+                        "\"ManufacturerCustomerID\":\"56124\"" +
+                    "} " +
+                "}," +
+                "\"LeadCreationDateTime\":\"0001-01-01T00:00:00\"" +
+                "}," +
+                "\"SalesLeadDetail\": {" +
+                    "\"@xmlns\":\"http://www.starstandard.org/STAR/5\"," +
+                    "\"SalesActivity\": " +
+                        "[" +
+                            "{" +
+                                "\"ActivityID\":\"131758\"," +
+                                "\"ActivityDateTime\":\"2021-07-14T07:49:42\"," +
+                                "\"ActivityTypeString\":\"LC\"" +
+                            "}, " +
+                            "{" +
+                                "\"ActivityID\":\"131757\"," +
+                                "\"ActivityDateTime\":\"2021-07-14T07:49:42\"," +
+                                "\"ActivityTypeString\":\"LO\"" +
+                            "}" +
+                        "]," +
+                    "\"SalesLeadLineItem\": {" +
+                        "\"SalesLeadVehicleLineItem\":" +
+                            "[" +
+                                "null,null" +
+                            "]" +
+                    "}," +
+                    "\"ID\":\"W09_21157\"" +
+                "}" +
+            "}";
+        SetObjectAsJson(json);
 
         ExpandedNodes.Add(Items.First());
         //ExpandedNodes.Add(NewItems.Skip(1).Take(1).First().Childs.Skip(1).First());
